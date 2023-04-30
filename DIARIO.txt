@@ -1,0 +1,60 @@
+- lanciato create env
+- impostato ambiente come default
+- creato file env com le chiavi
+
+
+scopo:
+
+an AI designed to autonomously develop a project and code to allow a collaborative training over internet of big torch models
+
+
+
+The aim of the project is to define from scratch the code and the structure of a platform capable of carrying out the training of a generic pytorch model in a distributed and parallel way on an indefinite number of machines connected to each other via the Internet. The system will consist of a master machine that defines the model and data and coordinates the training and multiple client machines that will perform the training in parallel. The system will have to optimize the code keeping the following limits: each machine will have different resources (computational and memory) than the others, no machine will be able to store the entire model in memory, but only part of it,connectivity between machines may be slow or unstable,the machines connected to the network are not known a priori, so new machines can be added or removed at any time, some clients may disconnect or crash, so in this case there must be a procedure able to reassign the uncompleted work to another machine
+
+
+the code must be written in python within the workspace. The project must have code for both the master and client machines to work The code must be able to be installed on each machine via a docker-compose and corresponding docker files containing all the necessary code and the environment to run it.
+
+
+The aim is to develop a project and realted code for a distribuited platform to allow training of big pytorch LLM models over internet.
+The project shall be configured in follow way:
+- a master machine, able to inizialize the structure of LLM model to train and coordinate the clients. The master machine shall init the global network, shall allow the clients to see eeach other and shall able to coordinate the in gerarchical strategy. It shall split the training to available clients and inform them where to find the data to use for training.
+- a undefined number of clientmachines able to connect to global network initialized by the master. 
+- Each client shall be able to execute the work item assigned to it by the master
+- If the client is not able to execute the complete work, shall split it and distribuite it on other free sub-clients. 
+- Once the sub-client finish the work item assigned to it, it shall send the result to other client that required it
+- Once all sub-clients finish their work, they shall send the results to the client that assigned to them. The client that receive the result shall be able to match all result in a coherent way and send the result again to client that required it, till the complete result arrive to master
+
+Lo scopo del progetto è definire il codice e la struttura di una piattaforma in grado di effettuare l'addestramento di una grande rete LLM in modo distribuito e parallelo su un numero indefinito di macchine collegate tra di loro.
+La struttura della rete sarà composta da una macchina "master" e un numero indfinito di macchine "client".
+La macchina master, una volta avviata creerà una rete cui i client si potranno collegare e si metterà in ascolto dei client che via via si collegheranno. La macchina master definirà la struttura del modello da addestrare e sarà in grado di distribuire ai client il batch di addestramento e la parte di rete che gli servirà. LE macchine cliente, una volta accese si collegheranno alla rete e periodicamente forniranno il loro status. Quando una o più macchine client si collegheranno, la macchina master distribuirà loro in modo omogeneo la parte di addestramento che dovranno eseguire e il batch di dati da usare. Le macchine client una volta ricevuto il lavoro da eseguire, verificheranno se hanno risorse sufficient per eseguirlo. Se non hanno risorse sufficienti, verificheranno se esistono altri client liberi e in quel caso a loro volta distribuiranno equamente tale carico su un sufficiente numero di macchine. Ogni client, una volta finito il proprio lavoro, invierà i risultati alla macchina che glielo ha richiesto, che provvederà a raccogliere i risultati e una volta che tutti i lavori saranno finiti, lo invierà alla macchina che glieli ha richiesti che raccoglierà i dati allo stesso modo e cosi via, finchè tutti i risultati arriveranno alla macchina master. Una volta che la macchina master verificherà la completa esecuzione degli addestramenti, aggiornerà il modello e ricomincerà un nuovo ciclo sul successivo batch di dati.
+Il sistema dovrà ottimizzare il codice tenendo dei seguenti limiti:
+- ogni macchina avrà risorse differenti (computazionali e di memori) rispetto alle altre
+- la connettività tra le macchine potrebbe essere lenta o instabile
+- alcuni client potrebbero disconnettersi o crashare, per cui nel caso dovrà essere presente una procedura in grado di riassegnare il lavoro ad un'altra macchina
+
+
+
+Lo scopo del progetto è definire da zero il codice e la struttura di una piattaforma in grado di effettuare l'addestramento di una grande rete LLM in modo distribuito e parallelo su un numero indefinito di macchine collegate tra di loro tramite internet.
+Il sistema sarà costotuito da una macchina master che definisce il modello e i dati e coordina l'addestramento e più macchine client che eseguiranno l'addestramento in modo parallelo.
+Il sistema dovrà ottimizzare il codice tenendo dei seguenti limiti:
+- ogni macchina avrà risorse differenti (computazionali e di memoria) rispetto alle altre
+- nessuna macchina sarà in grado di contenere in memoria l'intero modello, ma solo parte di esso
+- la connettività tra le macchine potrebbe essere lenta o instabile
+- la macchine connesse alla rete non sono note a priori, per cui in ogni momento nuove macchine possono aggiungersi  o togliersi
+- alcuni client potrebbero disconnettersi o crashare, per cui nel caso dovrà essere presente una procedura in grado di riassegnare il lavoro non completato ad un'altra macchina
+
+
+il codice dovrà essere scritto in python all'interno dell'area di lavoro.
+Il progetto deve avere il codice sia per il funzionamento della machina master che delle macchina client
+Il codice dovra poter essere installabile su ogni macchina tramite una docker-compose e corrispondenti docker file contenenti tutti il codice necessario e l'ambiente per farlo girare.
+
+
+
+of part of the network and shall be able to distribuite the train of the network if they aren't able to fit all model with available resource of memory.
+When the part of training is complete, the have to send they result to the client that assigned them this part.
+
+
+
+ SYSTEM:  Command message_agent returned: Sure, here are some tips on how to optimize your profile picture on Instagram: 1. Use a high-quality image: Your profile picture should be clear and high-resolution, so it looks good on any device. 2. Choose a recognizable image: Your profile picture should be easily recognizable and reflect your brand or personality. If you're a business, consider using your logo as your profile picture. 3. Keep it simple: Avoid using busy or cluttered images that can be difficult to see when scaled down to a small size. 4. Use a consistent image: If you're using Instagram for business, consider using the same profile picture across all your social media profiles to create a consistent brand image. 5. Test different images: If you're not sure which image to use, try testing different options to see which one gets the most engagement from your followers. Remember, your profile picture is one of the first things people see when they visit your Instagram profile, so it's important to make a good first impression.
+Error: The following AI output couldn't be converted to a JSON:
+  Command message_agent, args: "key": "4", "message": "Can you provide more details on how to write a compelling bio?"
